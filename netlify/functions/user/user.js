@@ -14,11 +14,16 @@ const userIds = [
 ];
 
 const returnResponse = (response) => {
-  return { ...response,     headers: {
-    "Access-Control-Allow-Headers": "*",
-    "Access-Control-Allow-Origin": "*"
-  }}
-}
+  return {
+    ...response,
+    headers: {
+      "Access-Control-Allow-Methods": "*",
+      "Access-Control-Allow-Headers": "*",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": "true"
+    },
+  };
+};
 
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
 const authenticateUser = ({ email, password }) => {
