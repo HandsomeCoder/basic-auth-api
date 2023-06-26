@@ -23,7 +23,7 @@ const handler = async (event) => {
   switch (httpMethod) {
     case "POST":
       if (path === "/.netlify/functions/user/auth") {
-        const payload = event["body"];
+        const payload = JSON.parse(event["body"]);
         console.log(payload)
         return authenticateUser(payload);
       } else {
