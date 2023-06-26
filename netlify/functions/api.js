@@ -6,7 +6,7 @@ const cors = require('cors')
 const compression = require('compression');
 
 const api = express();
-app.use(express.json({limit: '1mb'}));
+api.use(express.json({limit: '1mb'}));
 api.use(cors())
 api.use(logger('dev'));
 api.use(compression());
