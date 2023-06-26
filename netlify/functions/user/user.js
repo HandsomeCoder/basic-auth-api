@@ -20,13 +20,22 @@ const authenticateUser = ({ email, password }) => {
     const userToken = JSON.stringify({ userId: userIds[0], salt: uuidv4() });
     return {
       statusCode: 200,
-      body: JSON.stringify({ token: btoa(userToken) }),
+      body: JSON.stringify({
+        status: "SUCCESS",
+        data: {
+          token: btoa(userToken),
+        },
+      }),
     };
   }
 
   return {
     statusCode: 400,
-    body: JSON.stringify({ message: "Either email or password is incorrect" }),
+    body: JSON.stringify({
+      status: "ERROR",
+      error_code: "INVALID_CREDENTIALS",
+      message: "Either email or password is incorrect",
+    }),
   };
 };
 
