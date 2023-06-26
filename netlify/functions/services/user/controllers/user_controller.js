@@ -2,7 +2,7 @@ const { UserService } = require("../services/user_services");
 
 const authenticateUser = async (req, res) => {
   const response = await UserService.authenticateUser(req.body);
-  res.status(201).json(response);
+  res.status(200).json(response);
 };
 
 const controller = {
