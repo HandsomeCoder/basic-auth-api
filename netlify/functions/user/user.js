@@ -1,6 +1,46 @@
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
+
+const authenticateUser = ({email, password}) => {
+
+  if (email === "csci.3130.fake@dal.ca" && password === "CSCI3130@Student") {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: `Hello ${subject}` }),
+    }
+  }
+
+  return {
+    statusCode: 400,
+    body: JSON.stringify({ message: "Either email or password is incorrect" }),
+  }
+
+
+}
+
 const handler = async (event) => {
+
+
+  const { httpMethod, path } = event
+
+  console.log(httpMethod, path)
+
+  switch (httpMethod) {
+    case "POST":
+      if (path === "/auth"){
+        const payload = event["body"]
+        return authenticateUser(payload)
+      } else {
+        return { statusCode: 400, body: "Invalid request" }
+      }
+      break
+    default:
+      return { statusCode: 400, body: "Invalid request" }
+  }
+
   try {
+
+
+
     const subject = event.queryStringParameters.name || 'World'
     return {
       statusCode: 200,
