@@ -1,6 +1,7 @@
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
 
 const authenticateUser = ({ email, password }) => {
+  console.log(email, password);
   if (email === "csci.3130.fake@dal.ca" && password === "CSCI3130@Student") {
     return {
       statusCode: 200,
