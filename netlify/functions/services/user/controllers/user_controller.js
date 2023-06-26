@@ -1,6 +1,6 @@
-const { UserService } = require("../services/user_service");
+const { UserService } = require("../services/user_services");
 
-const authenticateUser = async (req, res, next) => {
+const authenticateUser = async (req, res) => {
   const response = await UserService.authenticateUser(req.body);
   res.status(201).json(response);
 };
