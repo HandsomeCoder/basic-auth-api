@@ -13,12 +13,19 @@ const userIds = [
   "a39141f5-9fa3-410b-a319-90987d1d2dd3",
 ];
 
+const returnResponse = (response) => {
+  return { ...response,     headers: {
+    "Access-Control-Allow-Headers": "*",
+    "Access-Control-Allow-Origin": "*"
+  }}
+}
+
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
 const authenticateUser = ({ email, password }) => {
   console.log(email, password);
   if (email === "csci.3130.fake@dal.ca" && password === "CSCI3130@Student") {
     const userToken = JSON.stringify({ userId: userIds[0], salt: uuidv4() });
-    return {
+    return returnResponse({
       statusCode: 200,
       body: JSON.stringify({
         status: "SUCCESS",
@@ -26,17 +33,17 @@ const authenticateUser = ({ email, password }) => {
           token: btoa(userToken),
         },
       }),
-    };
+    });
   }
 
-  return {
+  return returnResponse({
     statusCode: 400,
     body: JSON.stringify({
       status: "ERROR",
       error_code: "INVALID_CREDENTIALS",
       message: "Either email or password is incorrect",
     }),
-  };
+  });
 };
 
 const handler = async (event) => {
@@ -51,29 +58,16 @@ const handler = async (event) => {
         console.log(payload);
         return authenticateUser(payload);
       } else {
-        return {
+        return returnResponse({
           statusCode: 400,
           body: JSON.stringify({ message: "Invalid request" }),
-        };
+        });
       }
     default:
-      return {
+      return returnResponse({
         statusCode: 400,
         body: JSON.stringify({ message: "Invalid request" }),
-      };
-  }
-
-  try {
-    const subject = event.queryStringParameters.name || "World";
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: `Hello ${subject}` }),
-      // // more keys you can return:
-      // headers: { "headerName": "headerValue", ... },
-      // isBase64Encoded: true,
-    };
-  } catch (error) {
-    return { statusCode: 500, body: error.toString() };
+      });
   }
 };
 
