@@ -1,8 +1,6 @@
 const express = require('express');
 const serverless = require("serverless-http");
 
-import serverless from "serverless-http";
-
 const logger = require('morgan');
 const cors = require('cors')
 const compression = require('compression');
