@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/HandsomeCoder/basic-auth-api/issues"
   },
-  "homepage": "https://github.com/HandsomeCoder/basic-auth-api#readme"
+  "homepage": "https://github.com/HandsomeCoder/basic-auth-api#readme",
+  "dependencies": {
+    "uuid": "^9.0.0"
+  }
 }
