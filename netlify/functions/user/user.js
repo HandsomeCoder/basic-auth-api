@@ -5,7 +5,7 @@ const authenticateUser = ({ email, password }) => {
   if (email === "csci.3130.fake@dal.ca" && password === "CSCI3130@Student") {
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: `Hello ${subject}` }),
+      body: JSON.stringify({ token: `Hello ${subject}` }),
     };
   }
 
@@ -24,6 +24,7 @@ const handler = async (event) => {
     case "POST":
       if (path === "/.netlify/functions/user/auth") {
         const payload = event["body"];
+        console.log(payload)
         return authenticateUser(payload);
       } else {
         return {
