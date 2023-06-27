@@ -95,9 +95,13 @@ const getUser = async (user_id) => {
     };
   }
 
-  const [_, user] = Object.entries(users).filter(
+  const data = Object.entries(users).filter(
     ([_, user]) => user["id"] === user_id
   );
+
+  console.log(data);
+
+  const [_, user] = data;
 
   return { status: "SUCCESS", data: user };
 };
