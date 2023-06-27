@@ -2,22 +2,22 @@ const { v4: uuidv4 } = require("uuid");
 
 const workspaces = [
   {
-    id: "1021ba34-58f5-423c-9b96-a12ef2fac1c7",
-    first_name: "Calvin",
-    last_name: "Hartman",
-    email: "calvin.hartman.fake@generic.ca",
+    id: "218ba941-de37-4ea8-bfe3-5eb928fb9563",
+    name: "CSCI 3130",
+    created_by: "1021ba34-58f5-423c-9b96-a12ef2fac1c7",
+    created_on: "2023-06-1T03:10:20.939Z",
   },
   {
-    id: "34af6eee-0454-4c39-acbf-c799fdd13edb",
-    first_name: "Jason",
-    last_name: "Butler",
-    email: "jason.butler.fake@generic.ca",
+    id: "01d0b425-4fb7-4975-b6f7-a0e80d9da6d7",
+    name: "CSCI 5308",
+    created_by: "34af6eee-0454-4c39-acbf-c799fdd13edb",
+    created_on: "2023-06-10T03:10:20.939Z",
   },
   {
-    id: "af4ce6b2-1465-4963-9031-347113438234",
-    first_name: "Paul",
-    last_name: "Cornwell",
-    email: "paul.cornwell.fake@generic.ca",
+    id: "25da94cf-336e-4f18-9e31-07526c70dc83",
+    name: "CSCI 1170",
+    created_by: "af4ce6b2-1465-4963-9031-347113438234",
+    created_on: "2023-06-15T03:10:20.939Z",
   },
 ];
 
@@ -76,9 +76,23 @@ const getWorkspace = async (workspace_id) => {
   };
 };
 
+/**
+ * @author Harsh Shah
+ * @description
+ * @params workspace_id
+ * @return workspace details
+ */
+const getWorkspaces = async () => {
+  return {
+    status: "SUCCESS",
+    data: workspaces,
+  };
+};
+
 module.exports = {
   WorkspaceService: {
     createWorkspace,
+    getWorkspaces,
     getWorkspace,
   },
 };

@@ -8,9 +8,15 @@ const createWorkspace = async (req, res) => {
 };
 
 const getWorkspace = async (req, res) => {
-  console.log(req.query)
+  console.log(req.query);
   const workspace_id = req.query.workspace_id;
   const response = await WorkspaceService.getWorkspace(workspace_id);
+  const { status } = response;
+  res.status(status === "SUCCESS" ? 200 : 400).json(response);
+};
+
+const getWorkspaces = async (_, res) => {
+  const response = await WorkspaceService.getWorkspaces();
   const { status } = response;
   res.status(status === "SUCCESS" ? 200 : 400).json(response);
 };
@@ -18,6 +24,7 @@ const getWorkspace = async (req, res) => {
 module.exports = {
   WorkspaceController: {
     createWorkspace,
+    getWorkspaces,
     getWorkspace,
   },
 };

@@ -4,5 +4,6 @@ const router = express.Router();
 
 router.post("/", WorkspaceController.createWorkspace);
 router.get("/", WorkspaceController.getWorkspace);
+router.get("s/", WorkspaceController.getWorkspaces);
 
 module.exports = router;
