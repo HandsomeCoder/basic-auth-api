@@ -19,7 +19,7 @@ const authenticateUser = async (req, res) => {
   res.status(status === "SUCCESS" ? 200 : 400).json(response);
 };
 
-const getUserDetails = async (req, res) => {
+const getAuthenticateUser = async (req, res) => {
   const { user_id } = req;
   const response = await UserService.getUser(user_id);
   res.status(200).json(response);
@@ -29,5 +29,6 @@ module.exports = {
   UserController: {
     registerUser,
     authenticateUser,
+    getAuthenticateUser
   },
 };
