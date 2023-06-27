@@ -1,8 +1,8 @@
 const WHITELIST_URL = new Set([
-  "POST_/app/user/authenticate",
-  "POST_/app/user/register",
-  "GET_/",
-  "GET_",
+  "POST_/.netlify/functions/app/app/user/authenticate",
+  "POST_/.netlify/functions/app/app/user/register",
+  "GET_/.netlify/functions/app/",
+  "GET_/.netlify/functions/app",
 ]);
 
 const UNAUTHORIZED_MESSAGE = {
@@ -16,8 +16,6 @@ const jwtInterceptor = async (req, res, next) => {
   const url = req.originalUrl;
   const method = req.method;
   const apiKey = `${method}_${url}`;
-
-  console.log("API Key", apiKey, req);
 
   if (WHITELIST_URL.has(apiKey)) {
     return next();
