@@ -38,8 +38,8 @@ const authenticateUser = async ({ email, password }) => {
   };
 };
 
-const service = {
-  authenticateUser,
+module.exports = {
+  UserService: {
+    authenticateUser,
+  },
 };
-
-module.exports = { UserService: service };

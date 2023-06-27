@@ -6,8 +6,8 @@ const authenticateUser = async (req, res) => {
   res.status(status === "SUCCESS" ? 200 : 400).json(response);
 };
 
-const controller = {
-  authenticateUser,
+module.exports = {
+  UserController: {
+    authenticateUser,
+  },
 };
-
-module.exports = { UserController: controller };
