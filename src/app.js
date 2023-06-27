@@ -8,12 +8,12 @@ const compression = require('compression');
 const router = require('./routes');
 router.get("/", (_, res) => res.json({ status: true }));
 
-const api = express();
+const app = express();
 
-api.use(express.json({limit: '1mb'}));
-api.use(cors())
-api.use(logger('dev'));
-api.use(compression());
-api.use("/.netlify/functions/api", router);
+app.use(express.json({limit: '1mb'}));
+app.use(cors())
+app.use(logger('dev'));
+app.use(compression());
+app.use("/.netlify/functions/api", router);
 
-export const handler = serverless(api);
+export const handler = serverless(app);
