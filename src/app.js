@@ -4,7 +4,7 @@ const logger = require('morgan');
 const cors = require('cors')
 const compression = require('compression');
 
-const jwtInterceptor = require('./interceptor/jwt_interceptor');
+const jwtInterceptor = require('./interceptors/jwt_interceptor');
 const router = require('./routes');
 
 const app = express();
