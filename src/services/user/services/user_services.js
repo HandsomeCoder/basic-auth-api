@@ -95,13 +95,19 @@ const getUser = async (user_id) => {
     };
   }
 
-  const data = Object.entries(users).filter(
+  const selectedUsers = Object.entries(users).filter(
     ([_, user]) => user["id"] === user_id
   );
 
-  console.log(data);
+  if (!selectedUsers || selectedUsers.length !== 1){
+    return {
+      status: "ERROR",
+      error_code: "INVALID_REQUEST",
+      message: "Failed to get user details",
+    };
+  }
 
-  const [_, user] = data;
+  const [_, user] = selectedUsers[0];
 
   return { status: "SUCCESS", data: user };
 };
