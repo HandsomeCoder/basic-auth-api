@@ -10,6 +10,7 @@ router.get("/", (_, res) => res.json({ status: true }));
 
 const app = express();
 
+app.use(logger(':method :url :status :res[content-length] - :response-time ms'));
 app.use(express.json({limit: '1mb'}));
 app.use(cors())
 app.use(logger('dev'));
