@@ -8,7 +8,8 @@ const createWorkspace = async (req, res) => {
 };
 
 const getWorkspace = async (req, res) => {
-  const { workspace_id } = req.params;
+  console.log(req.params)
+  const workspace_id = req.params["workspace_id"];
   const response = await WorkspaceService.getWorkspace(workspace_id);
   const { status } = response;
   res.status(status === "SUCCESS" ? 200 : 400).json(response);
