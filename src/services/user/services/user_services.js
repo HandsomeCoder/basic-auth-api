@@ -24,16 +24,16 @@ const users = {
 /**
  * @author Harsh Shah
  * @description
- * @params first_name, last_name, email_address, password
+ * @params first_name, last_name, email, password
  * @return user_id
  */
-const registerUser = async (first_name, last_name, email_address, password) => {
-  if (!first_name || !last_name || !email_address || !password) {
+const registerUser = async (first_name, last_name, email, password) => {
+  if (!first_name || !last_name || !email || !password) {
     return {
       status: "ERROR",
       error_code: "INVALID_REQUEST",
       message:
-        "Following fields are required [first_name, last_name, email_address, password]",
+        "Following fields are required [first_name, last_name, email, password]",
     };
   }
 
