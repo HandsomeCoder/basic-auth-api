@@ -17,7 +17,7 @@ const jwtInterceptor = async (req, res, next) => {
   const method = req.method;
   const apiKey = `${method}_${url}`;
 
-  console.log(apiKey);
+  console.log("API Key", apiKey, req);
 
   if (WHITELIST_URL.has(apiKey)) {
     return next();
