@@ -39,4 +39,4 @@ const jwtInterceptor = async (req, res, next) => {
   return next();
 };
 
-module.exports = { jwtInterceptor };
+module.exports = jwtInterceptor;
