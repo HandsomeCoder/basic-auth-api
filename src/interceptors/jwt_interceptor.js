@@ -1,6 +1,6 @@
 const WHITELIST_URL = new Set([
-  "POST_/.netlify/functions/app/app/user/authenticate",
-  "POST_/.netlify/functions/app/app/user/register",
+  "POST_/.netlify/functions/app/user/authenticate",
+  "POST_/.netlify/functions/app/user/register",
   "GET_/.netlify/functions/app/",
   "GET_/.netlify/functions/app",
 ]);
