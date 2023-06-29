@@ -69,7 +69,7 @@ const authenticateUser = async (email, password) => {
   }
 
   const userToken = JSON.stringify({
-    user_d: user["id"],
+    user_id: user["id"],
     salt: uuidv4(),
   });
   return {
